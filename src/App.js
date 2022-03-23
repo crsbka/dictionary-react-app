@@ -9,12 +9,14 @@ export default function App() {
                 <img src={logo} className="App-logo" alt="logo"/>
 
                 <main>
-                    <Dictionary />
+                    <Dictionary/>
                 </main>
 
-                <footer className="text-center">
-                   Coded by Krima
-                </footer>
+                <small>
+                    <footer className="text-center">
+                        Coded by Krima
+                    </footer>
+                </small>
 
 
             </header>
