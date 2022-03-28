@@ -1,10 +1,12 @@
 .Dictionary {
     color: red;
+    max-width: 720px;
+
 }
 .App-logo {
     color: blueviolet;
-    size: 20px;
+    size: 10px;
 }
 .Results {
-    color: darkslategrey;
+    color: #234141;
 }
