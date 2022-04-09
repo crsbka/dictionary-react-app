@@ -4,35 +4,60 @@ import Results from './Results.js';
 import './Dictionary.css';
 
 
-export default function Dictionary() {
-    const [keyword, setKeyword] = useState("");
+export default function Dictionary(props) {
+    const [keyword, setKeyword] = useState(props.defaultKeyword);
     const [results, setResults] = useState(null);
+    const [loaded, setLoaded] = useState(false);
 
 
-    function handleResponse(response){
+    function handleResponse(response) {
         setResults(response.data[0]);
     }
 
-    function search(event) {
-        event.preventDefault();
-
-        let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}` ;
+    function search() {
+        let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
         axios.get(apiUrl).then(handleResponse);
     }
 
-        function handleKeywordChange(event) {
+    function handleSubmit(event) {
+        event.preventDefault();
+        search();
+    }
+
+    function load() {
+        setLoaded(true);
+        search();
+    }
+
+
+    function handleKeywordChange(event) {
         setKeyword(event.target.value);
     }
 
-    return (
-        <div className="container Dictionary">
+    if (loaded) {
+        return (
+            <div className="container Dictionary">
+                <section>
+                    <h2>What word do you want to look up?</h2>
+                    <form onSubmit={handleSubmit}>
+                        <input type="search" onChange={handleKeywordChange} defaultValue={props.defaultKeyword}/>
+                    </form>
 
-            <form onSubmit={search}>
-                <input type="search" onChange={handleKeywordChange}/>
-            </form>
+                    <div className="hint">
+                        Suggested words: sunset, cat, yoga, coffee...
+                    </div>
 
-            <Results results={results}/>
+                </section>
 
-        </div>
-    );
+
+                <Results results={results}/>
+
+
+            </div>
+        );
+    } else {
+        load();
+        return "Loading";
+    }
+
 }

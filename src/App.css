@@ -3,9 +3,9 @@
 }
 
 .App-logo {
-  height: 10vmin;
+  height: 5vmin;
   pointer-events: none;
-  margin: 10px 0 10px 0;
+  margin: 10px 10px 10px 0;
   color: blueviolet;
 }
 
@@ -22,4 +22,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body{
+  background: rgba(58, 84, 84, 0.09);
 }
