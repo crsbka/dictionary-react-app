@@ -46,6 +46,10 @@
     font-size: 26px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #303348;
+    color: rgba(23, 26, 23, 0.9);
+}
 
+.App-footer {
+    text-align: center;
+    margin: 10px 0;
 }
